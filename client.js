@@ -7,7 +7,7 @@ addEventListener('DOMContentLoaded', () => {
 
     const msgHandler = (msg) => {
         console.log(msg.data);
-        moveOverlayBy(Number(msg.data) * 2);
+        moveOverlayBy(Number(msg.data) * 5);
     };
 
     const moveOverlayBy = (diff) => {
