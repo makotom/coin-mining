@@ -1,0 +1,20 @@
+{
+  "name": "coin-mining",
+  "version": "0.0.1",
+  "description": "ちゃりーん",
+  "main": "server.js",
+  "scripts": {
+    "test": "eslint *.js && html-validator --file=client.html --verbose",
+    "start": "node server.js"
+  },
+  "author": "Makoto Mizukami <comm@makotom.org>",
+  "license": "ISC",
+  "dependencies": {
+    "serialport": "^6.2.1",
+    "ws": "^5.2.1"
+  },
+  "devDependencies": {
+    "eslint": "^5.0.1",
+    "html-validator-cli": "^4.0.4"
+  }
+}

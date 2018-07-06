@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<meta charset="UTF-8">
+<title>WebSocket console</title>
+
+<style>
+    img#imgCoin {
+        display: block;
+        width: auto;
+        height: calc(100vh - 16px);
+        margin: auto;
+    }
+
+    div#overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+
+        width: 100vw;
+        height: 100vh;
+
+        background-color: #fff;
+    }
+</style>
+
+<script src="client.js"></script>
+
+<img id="imgCoin" src="coin.png" alt="Image of Coin">
+<div id="overlay"></div>
+<audio id="audioCoin" src="coin.mp3" preload="auto"></audio>
