@@ -18,7 +18,7 @@
         {
             const ratio = series.slice(-1)[0].norm / mean;
 
-            if (ratio > 2) {
+            if (ratio > 1.2) {
                 console.log(ratio);
                 if (wss !== null && typeof wss.send === typeof (() => {})) {
                     wss.send(ratio);
