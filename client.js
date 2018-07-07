@@ -1,5 +1,5 @@
 addEventListener('DOMContentLoaded', () => {
-    const wsHost = 'ws://:8080/';
+    const wsHost = `ws://${location.host}/`;
     const ws = new WebSocket(wsHost);
     
     const overlay = document.querySelector('div#overlay');
