@@ -1,12 +1,31 @@
 {
-    const WebSocket = require('ws');
-    const wsd = new WebSocket.Server({ port: 8080 });
+    const express = require('express');
+    const serveIndex = require('serve-index');
+    const expressWs = require('express-ws');
 
-    let wss = null;
-    wsd.on('connection', (sock) => {
+    const rootDir = './';
+    const expApp = express();
+    const expWsInst = expressWs(expApp);
+
+    const wss = [];
+
+    expApp.use(
+        express.static('./'),
+        serveIndex(rootDir, {
+            icons: true
+        })
+    );
+    expWsInst.app.ws('/', (ws) => {
+        wss.push(ws);
+
+        ws.on('close', () => {
+            wss.splice(wss.indexOf(ws), 1);
+        });
+
         console.log('connected');
-        wss = sock;
     });
+
+    expApp.listen(8080);
 
     const handleData = (series) => {
         let mean = series[0].norm;
@@ -20,9 +39,9 @@
 
             if (ratio > 1.2) {
                 console.log(ratio);
-                if (wss !== null && typeof wss.send === typeof (() => {})) {
-                    wss.send(ratio);
-                }
+                wss.forEach((ws) => {
+                    ws.send(ratio);
+                });
             }
         }
     };
